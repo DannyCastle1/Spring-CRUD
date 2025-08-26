@@ -18,12 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
-/**
- *
- *
- *
- *
- */
 @Controller
 public class AddInhousePartController{
     @Autowired
