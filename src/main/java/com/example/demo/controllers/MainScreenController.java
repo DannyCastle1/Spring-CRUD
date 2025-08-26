@@ -11,17 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-/**
- *
- *
- *
- *
- */
-
 @Controller
 public class MainScreenController {
-   // private final PartRepository partRepository;
-   // private final ProductRepository productRepository;'
 
     private PartService partService;
     private ProductService productService;
@@ -29,22 +20,15 @@ public class MainScreenController {
     private List<Part> theParts;
     private List<Product> theProducts;
 
- /*   public MainScreenControllerr(PartRepository partRepository, ProductRepository productRepository) {
-        this.partRepository = partRepository;
-        this.productRepository = productRepository;
-    }*/
-
     public MainScreenController(PartService partService, ProductService productService){
         this.partService=partService;
         this.productService=productService;
     }
     @GetMapping("/mainscreen")
     public String listPartsandProducts(Model theModel, @Param("partkeyword") String partkeyword, @Param("productkeyword") String productkeyword){
-        //add to the spring model
         List<Part> partList=partService.listAll(partkeyword);
         theModel.addAttribute("parts",partList);
         theModel.addAttribute("partkeyword",partkeyword);
-        //theModel.addAttribute("products",productService.findAll());
         List<Product> productList=productService.listAll(productkeyword);
         theModel.addAttribute("products", productList);
         theModel.addAttribute("productkeyword",productkeyword);
